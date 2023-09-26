@@ -1,6 +1,15 @@
 <?php
-  require_once 'lib/products.php';
+  // require_once 'lib/products.php';
   require_once 'lib/function.php';
+
+  $jsonFilePath = 'data.json';
+
+  $jsonContents = file_get_contents($jsonFilePath);
+  $products = json_decode($jsonContents, true);
+
+  if($products === null) {
+    die('jsonファイルの読み込みに失敗しました');
+  }
 
 ?>
 
@@ -13,27 +22,69 @@
   <link rel="stylesheet" href="src/style/style.css">
 </head>
 <body>
-<div class="container">
-    <div class="app-container">
-      <h1 class="title">DailyTrial Shopping</h1>
-      <form id="cart" method="POST" action="lib/cart.php">
-        <div class="cards-container">
-          <?php foreach($products as $product): ?>
-          <div class="card">
-            <img class="card-image" src="https://dnbz0c2oupsw6.cloudfront.net/bcekt8ctzrsfdj1gsus49v9tnhqu" alt="">
-            <p class="card-title"><?php echo $product['name'] ?></p>
-            <div class="flex justify-between">
-              <p class="card-price"><?php echo displayPrice($product['price']) ?></p>
-              <input name="<?php echo $product['id'] ?>" min="0" max="9" class="item-number" type="number" value="0">
-            </div>
-          </div>
-          <?php endforeach; ?>
-        </div>
-      </form>  
-      <div class="btn-footer bg-white">
-        <input form="cart" class="cart-btn" type="submit" name="submit" value="カートに追加" />
+<header class="header">
+  <div class="header-nav">
+    <div class="header-nav__logo"><img src="src/images/common/logo.png" alt=""></div>
+    <p class="header-nav__text"><span>こんにちは</span>お届け先を選択</p>
+    <div class="header-nav__search">
+      <select name="" id="search">
+        <option value="カテゴリー01">カテゴリー01</option>
+        <option value="カテゴリー02">カテゴリー02</option>
+        <option value="カテゴリー03">カテゴリー03</option>
+        <option value="カテゴリー04">カテゴリー04</option>
+        <option value="カテゴリー05">カテゴリー05</option>
+        <option value="カテゴリー06">カテゴリー06</option>
+        <option value="カテゴリー07">カテゴリー07</option>
+        <option value="カテゴリー08">カテゴリー08</option>
+        <option value="カテゴリー09">カテゴリー09</option>
+      </select>
+      <input type="text" placeholder="検索 Amazon.co.jp">
+    </div>
+    <div class="header-nav__lang">JP</div>
+    <p class="header-nav__login">
+      <span>こんにちは、ログイン</span>アカウント＆リスト
+    </p>
+    <p class="header-nav__history">
+      <span>返品もこちら</span>注文履歴
+    </p>
+    <div class="header-nav__cart">
+      <div class="header-nav__count">
+        <span class="cart-count">0</span>
+        <span class="cart-icon"></span>
       </div>
+      <p class="header-nav__cart-text">カート</p>
     </div>
   </div>
+</header>
+<div class="container">
+      <!-- <form id="cart" method="POST" action="lib/cart.php"> -->
+        <div class="cards-container">
+          <?php
+          $maxLength = 70;
+
+          foreach($products as $product):
+            $productName = $product['name'];
+            
+            if(mb_strlen($productName) > $maxLength) {
+              $productName = mb_substr($productName, 0, $maxLength).'...';
+            }
+          ?>
+            <div class="card">
+              <div class="card-image">
+                <img src="<?php echo $product['image'] ?>" alt="">
+              </div>
+              <p class="card-title"><?php echo $productName ?></p>
+              <p class="card-price"><?php echo displayPrice($product['price']) ?></p>
+              <input name="<?php echo $product['id'] ?>" min="0" max="9" class="item-number" type="number" value="0">
+              <button class="cart-button" onclick="addToCart('<?php echo $product['id'] ?>')">カートに追加</button>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      <!-- </form>   -->
+      <!-- <div class="btn-footer bg-white">
+        <input form="cart" class="cart-btn" type="submit" name="submit" value="カートに追加" />
+      </div> -->
+  </div>
+  <script src="src/js/main.js"></script>
 </body>
 </html>
