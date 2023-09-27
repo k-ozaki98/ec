@@ -11,8 +11,6 @@
     die('jsonファイルの読み込みに失敗しました');
   }
 
-  
-
 ?>
 
 <!DOCTYPE html>
@@ -78,6 +76,18 @@
                 <img src="<?php echo $product['image'] ?>" alt="">
               </div>
               <p class="card-title"><?php echo $productName ?></p>
+              <div class="product-rating">
+              <?php
+                $rating = $product['rating'];
+                for ($i = 0; $i < 5; $i++) {
+                  if ($i < $rating) {
+                    echo '<span class="star-filled">&#9733;</span>'; // 星アイコン（塗りつぶし）
+                  } else {
+                    echo '<span class="star-empty">&#9733;</span>'; // 星アイコン（空）
+                  }
+                }
+              ?>
+            </div>
               <p class="card-price"><?php echo number_format(displayPrice($product['price'])) ?>円</p>
               <input name="<?php echo $product['id'] ?>" min="0" max="9" class="item-number" type="number" value="0">
               <button class="cart-button" onclick="addToCart('<?php echo $product['id'] ?>')">カートに追加</button>

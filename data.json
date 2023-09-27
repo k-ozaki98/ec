@@ -3,120 +3,140 @@
     "id": "01",
     "name": "コカ・コーラ 綾鷹 525mlPET×24本",
     "price": "1900",
+    "rating": 2,
     "image": "./src/images/img01.jpg"
   },
   {
     "id": "02",
     "name": "Fire HD 8 Plus タブレット - 8インチHD ディスプレイ 32GB グレー (2022年発売)",
     "price": "1500",
+    "rating": 5 ,
     "image": "./src/images/img02.jpg"
   },
   {
     "id": "03",
     "name": "富士通 ノートパソコン[ PCステージ　W.R.K 無線マウス付属] LIFEBOOK E734 Win11 MS Office 2019 第四世代Celeron-2970M 2.2GHz メモリー4GB SSD512GB DP WIFI 13.3 型ワイド(整備済み品)",
     "price": "18000",
+    "rating": 4 ,
     "image": "./src/images/img03.jpg"
   },
   {
     "id": "04",
     "name": "DELL デスクトップPC 7010/MS Office 2019/Win 10/Core i5-3470/HDMI/DVD-RW/16GB/512GB SSD (整備済み品)",
     "price": "26000",
+    "rating": 4 ,
     "image": "./src/images/img04.jpg"
   },
   {
     "id": "05",
     "name": "[ニューバランス] スニーカー ML574 現行モデル 10_グレー/オレンジ(MDG) 26.5 cm D",
     "price": "10000",
+    "rating": 4 ,
     "image": "./src/images/img05.jpg"
   },
   {
     "id": "06",
     "name": "[WLK] [Amazon限定ブランド] ランニングシューズ スニーカー エアクッション ウォーキングシューズ ジョギング クッション 運動靴 防滑 軽量 通気",
     "price": "3200",
+    "rating": 3 ,
     "image": "./src/images/img06.jpg"
   },
   {
     "id": "07",
     "name": "[JOYWAY] さんだる サンダル メンズ スポーツサンダル おしゃれ 人気 サンダル 紳士 シューズ メンズ サンダル スニーカーサンダル 男性用サンダル",
     "price": "3000",
+    "rating": 0 ,
     "image": "./src/images/img07.jpg"
   },
   {
     "id": "08",
     "name": "[クロックス] サンダル クロックバンド クロッグ 11016 (定番カラー)",
     "price": "4600",
+    "rating": 1 ,
     "image": "./src/images/img08.jpg"
   },
   {
     "id": "09",
     "name": "Amazonベーシック 乾電池 単3形 単三電池 アルカリ 20個セット",
     "price": "700",
+    "rating": 1 ,
     "image": "./src/images/img09.jpg"
   },
   {
     "id": "10",
     "name": "Amazonベーシック 乾電池 単4形 アルカリ 20個セット",
     "price": "700",
+    "rating": 4 ,
     "image": "./src/images/img10.jpg"
   },
   {
     "id": "11",
     "name": "[Amazon Essentials] パーカー ジップアップ 裏起毛 メンズ",
     "price": "2800",
+    "rating": 4 ,
     "image": "./src/images/img11.jpg"
   },
   {
     "id": "12",
     "name": "[AISFA] リュック メンズ リュックサック スクエア バックパック 防水15.6インチ PC ビジネス ラップトップバック USB充電ポート付き 30L アウトドア旅行 通勤 靴/弁当収納",
     "price": "7000",
+    "rating": 5 ,
     "image": "./src/images/img12.jpg"
   },
   {
     "id": "13",
     "name": "(ヴィヴィシティ) スーツケース キャリーバッグ キャリーケース 機内持込可 大容量 大型軽量 8輪 静音 TSAロック搭載 100%PC （Mサイズ ダークグレー",
     "price": "7900",
+    "rating": 4 ,
     "image": "./src/images/img13.jpg"
   },
   {
     "id": "14",
     "name": "[wolass] パーカー メンズ トレーナー 長袖 丸首 秋服 シャツ 大きいサイズ ゆったり ファッション ストライプ プリント 快適 人気 無地 シンプル 冬服",
     "price": "3800",
+    "rating": 4 ,
     "image": "./src/images/img14.jpg"
   },
   {
     "id": "15",
     "name": "プラス KR 軽量 スチールラック 業務用 (天地6段) 耐荷重150kg/段 |奥行462mm 高さ2100mm 幅1812mm 簡単組立 848643 ライトグレー",
     "price": "36000",
+    "rating": 4 ,
     "image": "./src/images/img15.jpg"
   },
   {
     "id": "16",
     "name": "GOKUMIN takumi マットレス 敷布団 4層構造 極厚15cm 高反発 高弾性 低反発 【4層入れ替えの失敗しない特別なアルティメイトマットレス】 防ダニ 抗菌 防臭 布団 (ブラック, シングル)",
     "price": "27000",
+    "rating": 3,
     "image": "./src/images/img16.jpg"
   },
   {
     "id": "17",
     "name": "[Yezai] スウェット パーカー 上下セット ジャージ メンズ レデイース ウェア トレーニングウェア スポーツウェア ランニングウェア 無地 カジュアル スポーツ アウター ズボン",
     "price": "3900",
+    "rating": 4 ,
     "image": "./src/images/img17.jpg"
   },
   {
     "id": "18",
     "name": "EXIO(エクシオ)ボクサーパンツ メンズ 4枚 セット ブランド 下着 ローライズ ボクサー パンツ ボクサーブリーフ ブリーフ",
     "price": "1400",
+    "rating": 4 ,
     "image": "./src/images/img18.jpg"
   },
   {
     "id": "19",
     "name": "[ラドウェザー] 腕時計 メンズ 電池不要のソーラー搭載 ミリタリーウォッチ メンズ レディース 時計 (05.ベージュ×カーキ)",
     "price": "3000",
+    "rating": 4 ,
     "image": "./src/images/img19.jpg"
   },
   {
     "id": "20",
     "name": "[RED RAY] [レッドレイ] ネコ 好き 飛び出る 半袖 Tシャツ",
     "price": "1400",
+    "rating": 4 ,
     "image": "./src/images/img20.jpg"
   }
 ]

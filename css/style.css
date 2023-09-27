@@ -337,3 +337,7 @@ img {
   text-align: center;
   width: 100%;
 }
+
+.star-filled {
+  color: #f39a00;
+}

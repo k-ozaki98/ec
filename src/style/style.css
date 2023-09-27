@@ -328,12 +328,20 @@ img {
   border: none;
 }
 
+.product-rating {
+  font-size: 1.5rem;
+}
+
 .payment-complete {
   position: absolute;
   top: 50%;
   margin-top: -100px;
   text-align: center;
   width: 100%;
+}
+
+.star-filled {
+  color: #f39a00;
 }
 
 /*# sourceMappingURL=style.css.map */
