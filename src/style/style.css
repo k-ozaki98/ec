@@ -79,6 +79,27 @@ img {
   display: block;
   color: #ccc;
 }
+.header .header-nav__search {
+  display: flex;
+}
+.header .header-nav .select-box {
+  width: 7rem;
+}
+.header .header-nav .select-box select {
+  border-radius: 5px 0 0 5px;
+  width: 7rem;
+  background: #e6e6e6;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border: none;
+}
+.header .header-nav input {
+  width: 77rem;
+  border: none;
+  background: #fff;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 .header .header-nav__login {
   font-size: 1.4rem;
   color: #fff;

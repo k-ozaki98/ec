@@ -78,6 +78,28 @@ img {
         color: #ccc;
       }
     }
+    &__search {
+      display: flex;
+    }
+    .select-box {
+      width: 7rem;
+      select {
+        border-radius: 5px 0 0 5px;
+        width: 7rem;
+        background: #e6e6e6;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border: none;
+
+      }
+    }
+    input {
+      width: 77rem;
+      border: none;
+      background: #fff;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
     &__login {
       font-size: 1.4rem;
       color: #fff;
