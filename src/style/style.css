@@ -46,11 +46,17 @@ img {
   font-weight: 200;
 }
 
+.header {
+  margin-bottom: 5rem;
+}
 .header .header-nav {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background: #131921;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2rem;
 }
 .header .header-nav__logo {
   width: 165px;
@@ -83,15 +89,24 @@ img {
   color: #fff;
   font-weight: bold;
   font-size: 2rem;
+  position: relative;
+  padding-left: 2rem;
+}
+.header .header-nav__lang::after {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background: url(/src/images/common/lang.png) no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: -1rem;
+  transform: translateY(-50%);
 }
 .header .header-nav__search {
   display: flex;
 }
-.header .header-nav .select-box {
-  width: 7rem;
-  height: 100%;
-}
-.header .header-nav .select-box select {
+.header .header-nav select {
   border-radius: 5px 0 0 5px;
   width: 7rem;
   background: #e6e6e6;
@@ -100,16 +115,17 @@ img {
   border: none;
 }
 .header .header-nav input {
-  width: 77rem;
+  width: 50rem;
   border: none;
   background: #fff;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
 }
 .header .header-nav .search-icon {
-  width: 5rem;
-  background: #f39a00;
+  width: 4rem;
+  background-color: #f39a00;
+  text-indent: -9999px;
   border-radius: 0 5px 5px 0;
+  position: relative;
 }
 .header .header-nav__login {
   font-size: 1.4rem;
@@ -169,6 +185,7 @@ img {
 .container {
   display: flex;
   justify-content: center;
+  padding: 0 5%;
 }
 
 .cards-container {
@@ -186,7 +203,7 @@ img {
 
 .card {
   width: 20%;
-  padding: 0px 10px;
+  padding: 0px 15px;
   margin: 16px 0px;
 }
 
@@ -207,7 +224,7 @@ img {
 }
 
 .item-number {
-  width: 40%;
+  width: 43%;
   border-radius: 20px;
   text-align: center;
   padding-top: 0.5rem;
@@ -238,7 +255,7 @@ img {
   background: #ffcc00;
   color: #111;
   border-radius: 50px;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
 }
 
 .app-container {

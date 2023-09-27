@@ -32,3 +32,8 @@ function getCartTotalQuantity() {
   }
   return totalQuantity;
 }
+
+
+$(function() {
+  $('.card-title').matchHeight();
+});
