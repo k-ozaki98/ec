@@ -11,6 +11,8 @@
     die('jsonファイルの読み込みに失敗しました');
   }
 
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -59,15 +61,15 @@
 <div class="container">
       <!-- <form id="cart" method="POST" action="lib/cart.php"> -->
         <div class="cards-container">
+        <?php foreach ($products as $product): ?>
           <?php
+          $productName = $product['name'];
           $maxLength = 70;
-
-          foreach($products as $product):
-            $productName = $product['name'];
-            
-            if(mb_strlen($productName) > $maxLength) {
-              $productName = mb_substr($productName, 0, $maxLength).'...';
-            }
+          
+          if (mb_strlen($productName, 'UTF-8') > $maxLength) {
+              $productName = mb_substr($productName, 0, $maxLength, 'UTF-8').'...';
+          }
+          
           ?>
             <div class="card">
               <div class="card-image">
