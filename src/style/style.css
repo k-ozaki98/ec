@@ -79,11 +79,17 @@ img {
   display: block;
   color: #ccc;
 }
+.header .header-nav__lang {
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+}
 .header .header-nav__search {
   display: flex;
 }
 .header .header-nav .select-box {
   width: 7rem;
+  height: 100%;
 }
 .header .header-nav .select-box select {
   border-radius: 5px 0 0 5px;
@@ -99,6 +105,11 @@ img {
   background: #fff;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.header .header-nav .search-icon {
+  width: 5rem;
+  background: #f39a00;
+  border-radius: 0 5px 5px 0;
 }
 .header .header-nav__login {
   font-size: 1.4rem;

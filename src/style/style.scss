@@ -78,11 +78,17 @@ img {
         color: #ccc;
       }
     }
+    &__lang {
+      color: #fff;
+      font-weight: bold;
+      font-size: 2rem;
+    }
     &__search {
       display: flex;
     }
     .select-box {
       width: 7rem;
+      height: 100%;
       select {
         border-radius: 5px 0 0 5px;
         width: 7rem;
@@ -99,6 +105,11 @@ img {
       background: #fff;
       padding-top: 1rem;
       padding-bottom: 1rem;
+    }
+    .search-icon {
+      width: 5rem;
+      background: #f39a00;
+      border-radius: 0 5px 5px 0;
     }
     &__login {
       font-size: 1.4rem;

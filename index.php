@@ -44,7 +44,7 @@
         </select>
       </div>
       <input type="text" placeholder="検索 Amazon.co.jp">
-      <input type="submit" value="検索">
+      <input type="submit" class="search-icon" value="検索">
     </div>
     <div class="header-nav__lang">JP</div>
     <p class="header-nav__login">
