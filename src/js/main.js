@@ -7,7 +7,6 @@ function addToCart(productId) {
   const quantityInput = document.querySelector('input[name="' + productId + '"]');
   const quantity = parseInt(quantityInput.value);
   
-  if (quantity > 0) {
     // サーバーサイドのAPIエンドポイントに非同期リクエストを送信
     fetch('/lib/add-to-cart.php', {
       method: 'POST',
@@ -19,8 +18,13 @@ function addToCart(productId) {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          // カートの数量を更新
-          cartItems[productId] = { quantity };
+          if (quantity === 0) {
+            // カートから商品を削除
+            delete cartItems[productId];
+          } else {
+            // カートの数量を更新
+            cartItems[productId] = { quantity };
+          }
           updateCartCount();
         } else {
           alert('カートの更新に失敗しました');
@@ -30,10 +34,9 @@ function addToCart(productId) {
         console.error('エラー:', error);
         alert('カートの更新に失敗しました');
       });
-  } else {
-    alert('数量を選択してください');
-  }
 }
+
+
 
 /**
  * カートの数量を更新する

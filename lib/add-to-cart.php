@@ -10,7 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
-    $_SESSION['cart'][$productId] = $quantity;
+    
+    if ($quantity === 0) {
+        // 数量が0の場合、カートから商品を削除
+        unset($_SESSION['cart'][$productId]);
+    } else {
+        // 数量が0でない場合、カートに商品を追加または更新
+        $_SESSION['cart'][$productId] = $quantity;
+    }
 
     // レスポンスの生成
     $response = [
@@ -26,4 +33,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     http_response_code(400); // バッドリクエスト
     echo json_encode(['error' => 'Bad Request']);
 }
+
 ?>
