@@ -60,6 +60,38 @@ function getCartTotalQuantity() {
   return totalQuantity;
 }
 
+$(document).ready(function() {
+  function keyword() {
+    let name_input = $('name').val();
+    let data = {
+      name: name_input
+    }
+    $.ajax({
+      url: '../../lib/search.php',
+      type: 'POST',
+      data: data,
+      timespan: 5000
+    }).done(function (data) {
+      $('#cards').empty();
+      // JSONを読み込む
+      let search_word = JSON.parse(data || 'null');
+      // 入力ワードがあれば
+      if(search_word.length != 0) {
+        for(let i = 0; i < search_word.length; i++) {
+          $('.card .card-title').text(search_word[i]).prependTo('#cards');
+        }
+      } else {
+        $('#cards').text('一致する商品はございません');
+      }
+    }).fail(function() {
+    });
+  }
+  $('.card .card-title').keyup(function() {
+    keyword();
+  });
+});
+// https://qiita.com/yushimasu/items/693c19cae7d62d8911c3
+
 
 $(function() {
   $('.card-title').matchHeight();
