@@ -39,7 +39,7 @@
           <option value="カテゴリー08">カテゴリー08</option>
           <option value="カテゴリー09">カテゴリー09</option>
         </select>
-      <input type="text" placeholder="検索 Amazon.co.jp">
+      <input type="text" placeholder="検索 Amazon.co.jp" id="">
       <input type="image" src="/src/images/common/search-icon.png" class="search-icon" value="検索">
     </div>
     <div class="header-nav__lang">JP</div>
@@ -60,7 +60,7 @@
 </header>
 <div class="container">
       <!-- <form id="cart" method="POST" action="lib/cart.php"> -->
-        <div class="cards-container">
+        <div class="cards-container" id="cards">
           
           <?php foreach ($products as $product): ?>
             <?php
