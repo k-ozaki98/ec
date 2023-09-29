@@ -12,14 +12,12 @@
   }
 
   // キーワードを受け取る
-  $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+  $keyword = isset($_GET['query']) ? $_GET['query'] : '';
 
   $searchResults = array_filter($products, function ($product) use ($keyword) {
     return stripos($product['name'], $keyword) !== false;
   });
 
-  header('Content-Type: application/json');
-  echo json_encode(array_values($searchResults));
 
 ?>
 
@@ -49,8 +47,11 @@
           <option value="カテゴリー08">カテゴリー08</option>
           <option value="カテゴリー09">カテゴリー09</option>
         </select>
-      <input type="text" placeholder="検索 Amazon.co.jp" id="">
-      <input type="image" src="/src/images/common/search-icon.png" class="search-icon" value="検索">
+        <form action="" method="GET">
+          <input type="text" placeholder="検索 Amazon.co.jp" name="query" id="search-query">
+          <input type="submit" src="/src/images/common/search-icon.png" class="search-icon" value="検索">
+
+        </form>
     </div>
     <div class="header-nav__lang">JP</div>
     <p class="header-nav__login">
@@ -72,7 +73,7 @@
       <!-- <form id="cart" method="POST" action="lib/cart.php"> -->
         <div class="cards-container" id="cards">
           
-          <?php foreach ($products as $product): ?>
+          <?php foreach ($searchResults as $product): ?>
             <?php
             $productName = $product['name'];
             $maxLength = 70;
@@ -81,7 +82,7 @@
                 $productName = mb_substr($productName, 0, $maxLength, 'UTF-8').'...';
             }
             ?>
-            <div class="card">
+            <div class="card" data-id="<?php echo $product['id']; ?>">
               <div class="card-image">
                 <img src="<?php echo $product['image'] ?>" alt="">
               </div>

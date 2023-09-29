@@ -1,22 +1,18 @@
 <?php
-// JSONデータを読み込む
-$jsonContents = file_get_contents('data.json');
-$products = json_decode($jsonContents, true);
 
-if ($products === null) {
-    die('JSONファイルの読み込みに失敗しました');
-}
+// $jsonFilePath = '../data.json';
 
-// キーワードを受け取る
-$keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
-// 商品リストをキーワードでフィルタリング
-$searchResults = array_filter($products, function ($product) use ($keyword) {
-    // 商品名にキーワードが含まれるかどうかをチェック
+  $jsonContents = file_get_contents('/Users/ozakikouki/Desktop/ec/data.json');
+  $products = json_decode($jsonContents, true);
+
+  if($products === null) {
+    die('jsonファイルの読み込みに失敗しました');
+  }
+
+  $keyword = isset($_GET['query']) ? $_GET['query'] : '';
+
+  $searchResults = array_filter($products, function($product) use ($keyword){
     return stripos($product['name'], $keyword) !== false;
-});
-
-// 検索結果をJSON形式で返す
-header('Content-Type: application/json');
-echo json_encode(array_values($searchResults));
+  });
 ?>
