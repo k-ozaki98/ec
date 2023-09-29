@@ -36,6 +36,8 @@ function addToCart(productId) {
       });
 }
 
+z
+
 
 
 /**

@@ -59,7 +59,7 @@ img {
   gap: 2rem;
 }
 .header .header-nav__logo {
-  width: 165px;
+  width: 13%;
 }
 .header .header-nav__text {
   font-size: 1.4rem;
@@ -67,6 +67,7 @@ img {
   font-weight: bold;
   position: relative;
   padding-left: 1.5rem;
+  width: 9%;
 }
 .header .header-nav__text::after {
   content: "";
@@ -328,6 +329,10 @@ img {
   background-color: #61D9D4;
   padding: 12px 16px;
   border: none;
+}
+
+z .product-rating {
+  font-size: 1.5rem;
 }
 
 .payment-complete {

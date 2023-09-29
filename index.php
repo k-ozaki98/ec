@@ -1,5 +1,5 @@
 <?php
-  // require_once 'lib/products.php';
+  require_once 'lib/search.php';
   require_once 'lib/function.php';
 
   $jsonFilePath = 'data.json';
@@ -10,6 +10,16 @@
   if($products === null) {
     die('jsonファイルの読み込みに失敗しました');
   }
+
+  // キーワードを受け取る
+  $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+
+  $searchResults = array_filter($products, function ($product) use ($keyword) {
+    return stripos($product['name'], $keyword) !== false;
+  });
+
+  header('Content-Type: application/json');
+  echo json_encode(array_values($searchResults));
 
 ?>
 
@@ -39,7 +49,8 @@
           <option value="カテゴリー08">カテゴリー08</option>
           <option value="カテゴリー09">カテゴリー09</option>
         </select>
-      <input type="text" placeholder="検索 Amazon.co.jp">
+      <input type="text" placeholder="検索 Amazon.co.jp" id="search-keyword">
+      <button onclick="searchProducts()">検索</button>
       <input type="image" src="/src/images/common/search-icon.png" class="search-icon" value="検索">
     </div>
     <div class="header-nav__lang">JP</div>
