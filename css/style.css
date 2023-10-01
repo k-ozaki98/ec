@@ -1,3 +1,4 @@
+@import url(common.scss);
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 62.5%;
@@ -11,6 +12,8 @@ html {
 
 body {
   position: relative;
+  width: 90%;
+  margin-right: auto;
 }
 
 a {
@@ -56,7 +59,6 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
 }
 .header .header-nav__logo {
   width: 13%;
@@ -89,7 +91,7 @@ img {
 .header .header-nav__lang {
   color: #fff;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.8rem;
   position: relative;
   padding-left: 2rem;
 }
@@ -116,7 +118,7 @@ img {
   border: none;
 }
 .header .header-nav input {
-  width: 50rem;
+  width: 30rem;
   border: none;
   background: #fff;
   padding: 1rem;
@@ -206,6 +208,10 @@ img {
   width: 20%;
   padding: 0px 15px;
   margin: 16px 0px;
+}
+
+.card-wrap {
+  cursor: pointer;
 }
 
 .card-image {
@@ -331,7 +337,7 @@ img {
   border: none;
 }
 
-z .product-rating {
+.product-rating {
   font-size: 1.5rem;
 }
 
@@ -345,4 +351,44 @@ z .product-rating {
 
 .star-filled {
   color: #f39a00;
+}
+
+.side-menu {
+  background: #fff;
+  width: 10%;
+  margin-left: auto;
+  height: 100vh;
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+}
+.side-menu .total-price {
+  font-size: 1.4rem;
+  text-align: center;
+}
+.side-menu .red-text {
+  color: #B12704;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
+
+.detail-inner {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.product-wrap {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  margin: 0 auto;
+}
+.product-wrap .product-img {
+  width: 30%;
+}
+.product-wrap .product-text {
+  width: 40%;
 }

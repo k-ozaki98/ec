@@ -1,6 +1,7 @@
 <?php
   require_once 'lib/search.php';
   require_once 'lib/function.php';
+  // require_once 'lib/detail.php';
 
   $jsonFilePath = 'data.json';
 
@@ -10,6 +11,10 @@
   if($products === null) {
     die('jsonファイルの読み込みに失敗しました');
   }
+
+  echo '<script>';
+echo 'const products = ' . json_encode($products) . ';';
+echo '</script>';
 
   // キーワードを受け取る
   $keyword = isset($_GET['query']) ? $_GET['query'] : '';
@@ -35,23 +40,23 @@
     <div class="header-nav__logo"><img src="src/images/common/logo.png" alt=""></div>
     <p class="header-nav__text"><span>こんにちは</span>お届け先を選択</p>
     <div class="header-nav__search">
-        <select name="" id="search">   
-          <option value="すべて">すべて</option>
-          <option value="カテゴリー01">カテゴリー01</option>
-          <option value="カテゴリー02">カテゴリー02</option>
-          <option value="カテゴリー03">カテゴリー03</option>
-          <option value="カテゴリー04">カテゴリー04</option>
-          <option value="カテゴリー05">カテゴリー05</option>
-          <option value="カテゴリー06">カテゴリー06</option>
-          <option value="カテゴリー07">カテゴリー07</option>
-          <option value="カテゴリー08">カテゴリー08</option>
-          <option value="カテゴリー09">カテゴリー09</option>
-        </select>
-        <form action="" method="GET">
-          <input type="text" placeholder="検索 Amazon.co.jp" name="query" id="search-query">
-          <input type="submit" src="/src/images/common/search-icon.png" class="search-icon" value="検索">
-
+      <form action="" method="GET">
+          <select name="" id="search">   
+            <option value="すべて">すべて</option>
+            <option value="カテゴリー01">カテゴリー01</option>
+            <option value="カテゴリー02">カテゴリー02</option>
+            <option value="カテゴリー03">カテゴリー03</option>
+            <option value="カテゴリー04">カテゴリー04</option>
+            <option value="カテゴリー05">カテゴリー05</option>
+            <option value="カテゴリー06">カテゴリー06</option>
+            <option value="カテゴリー07">カテゴリー07</option>
+            <option value="カテゴリー08">カテゴリー08</option>
+            <option value="カテゴリー09">カテゴリー09</option>
+          </select>
+          <input type="text" placeholder="検索 Amazon.co.jp" name="query" id="search-query" value="<?php echo htmlspecialchars($keyword, ENT_QUOTES); ?>">
+          <input type="submit" value="検索" class="search-icon">
         </form>
+
     </div>
     <div class="header-nav__lang">JP</div>
     <p class="header-nav__login">
@@ -82,11 +87,13 @@
                 $productName = mb_substr($productName, 0, $maxLength, 'UTF-8').'...';
             }
             ?>
-            <div class="card" data-id="<?php echo $product['id']; ?>">
-              <div class="card-image">
-                <img src="<?php echo $product['image'] ?>" alt="">
+            <div class="card">
+              <div class="card-wrap"  data-id="<?php echo $product['id']; ?>">
+                <div class="card-image">
+                  <img src="<?php echo $product['image'] ?>" alt="">
+                </div>
+                <p class="card-title"><?php echo $productName ?></p>
               </div>
-              <p class="card-title"><?php echo $productName ?></p>
               <div class="product-rating">
               <?php
                 $rating = $product['rating'];
@@ -109,6 +116,13 @@
       <!-- <div class="btn-footer bg-white">
         <input form="cart" class="cart-btn" type="submit" name="submit" value="カートに追加" />
       </div> -->
+  </div>
+
+  <div class="side-menu">
+    <p class="total-price"></p>
+    <div class="side-img">
+      <img src="" alt="">
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js" integrity="sha512-/bOVV1DV1AQXcypckRwsR9ThoCj7FqTV2/0Bm79bL3YSyLkVideFLE3MIZkq1u5t28ke1c0n31WYCOrO01dsUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
