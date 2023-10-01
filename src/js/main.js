@@ -128,6 +128,9 @@ function updateSideMenu() {
 
     // カートサイドメニューのクリックイベントリスナーを設定
     buyItem.addEventListener('click', sideMenuClickHandler);
+
+    updateCartCount();
+    updateCartTotal(); 
   }
 }
 
@@ -189,6 +192,24 @@ function sideMenuClickHandler(event) {
 
 // ページが読み込まれたときに実行される処理
 window.onload = function() {
+  // カートサイドメニューの数量変更ボタンにイベントリスナーを追加
+  document.querySelectorAll('.update-quantity').forEach(function(button) {
+    button.addEventListener('click', function() {
+      const productId = button.getAttribute('data-product-id');
+      const newQuantity = parseInt(button.parentElement.querySelector('input').value);
+
+      // カート内の数量を更新
+      if (cartItems[productId]) {
+        cartItems[productId].quantity = newQuantity;
+
+        addToCart(productId);
+
+        // カートの数量と合計金額を更新
+        updateCartCount();
+        updateCartTotal();
+      }
+    });
+  });
   // 検索フォームの要素を取得
   var searchInput = document.getElementById('search-query');
   
