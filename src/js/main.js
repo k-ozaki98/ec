@@ -1,4 +1,5 @@
 const cartItems = {};
+
 /**
  * カートに商品を追加する関数
  * @param {string} productId 追加する商品のID
@@ -6,7 +7,7 @@ const cartItems = {};
 function addToCart(productId) {
   const quantityInput = document.querySelector('input[name="' + productId + '"]');
   const quantity = parseInt(quantityInput.value);
-  
+
   // サーバーサイドのAPIエンドポイントに非同期リクエストを送信
   fetch('/lib/add-to-cart.php', {
     method: 'POST',
@@ -19,12 +20,11 @@ function addToCart(productId) {
     .then((data) => {
       if (data.success) {
         if (cartItems[productId]) {
-          if(quantity === 0) {
+          if (quantity === 0) {
             delete cartItems[productId];
           } else {
             // すでにカートに同じ商品がある場合、数量を更新
             cartItems[productId].quantity = quantity;
-
           }
         } else {
           if (quantity > 0) {
@@ -33,24 +33,27 @@ function addToCart(productId) {
             cartItems[productId] = { quantity, product };
           }
         }
-        
+
+        // カートの数量を更新
         updateCartCount();
 
         // 合計金額を計算して表示
         updateCartTotal();
 
         updateSideMenu();
+
+        const relatedInput = document.querySelector('input[data-id="' + productId + '"]');
+        if (relatedInput) {
+          relatedInput.value = quantity.toString();
+        }
       } else {
-        alert('カートの更新に失敗しました');
+        alert('カートの更新に失敗しました01');
       }
     })
     .catch((error) => {
-      console.error('エラー:', error);
-      alert('カートの更新に失敗しました');
+      alert('カートの更新に失敗しました02');
     });
 }
-
-
 
 /**
  * カートの数量を更新する
@@ -59,9 +62,10 @@ function updateCartCount() {
   const cartCountElement = document.querySelector('.cart-count');
   cartCountElement.innerText = getCartTotalQuantity();
 }
+
 /**
  * カートの数量を取得する
- * @returns {number} カート内の合計
+ * @returns {number} カート内の合計数量
  */
 function getCartTotalQuantity() {
   let totalQuantity = 0;
@@ -71,19 +75,23 @@ function getCartTotalQuantity() {
   return totalQuantity;
 }
 
-
+/**
+ * カートの合計金額を更新する
+ */
 function updateCartTotal() {
   let total = 0;
-  for(const productId in cartItems) {
+  for (const productId in cartItems) {
     const product = products.find((p) => p.id === productId);
-    if(product) {
+    if (product) {
       total += product.price * cartItems[productId].quantity;
     }
   }
 
   // 合計金額を表示する要素を取得して更新
   const totalElement = document.querySelector('.total-price');
-  totalElement.innerHTML = '小計<span class="red-text">' + total + '円</span>';
+  if (totalElement) {
+    totalElement.innerHTML = '小計<span class="red-text">' + total + '円</span>';
+  }
 }
 
 /**
@@ -91,20 +99,89 @@ function updateCartTotal() {
  * @param {string} productId 商品のID
  */
 function updateSideMenu() {
-  const sideMenu = document.querySelector('.side-img');
-  sideMenu.innerHTML = '';
+  const sideContents = document.querySelector('.side-contents');
 
-  for(const productId in cartItems) {
-    console.log(cartItems);
-    const product = cartItems[productId].product;
-    if(product) {
-      const imageElement = document.createElement('img');
-      imageElement.src = product.image;
-      imageElement.alt = product.name;
-      sideMenu.appendChild(imageElement);
-    }
+  // クリックイベントを削除
+  sideContents.removeEventListener('click', sideMenuClickHandler);
+
+  sideContents.innerHTML = ''; // 既存の内容をクリア
+
+  for (const productId in cartItems) {
+    const { product, quantity } = cartItems[productId];
+
+    const buyItem = document.createElement('div');
+    buyItem.classList.add('buy-item');
+
+    buyItem.innerHTML = `
+      <div class="buy-item-img">
+        <img src="${product.image}" alt="${product.name}">
+      </div>
+      <p class="item-price">価格：${product.price}円</p>
+      <div class="item-quantity">
+        <input name="${product.id}" data-id="${product.id}" min="0" max="9" class="item-number" type="number" value="${quantity}">
+        <button class="update-quantity" data-product-id="${product.id}">決定</button>
+      </div>
+      <button class="remove-item" name="${productId}">削除</button>
+    `;
+
+    sideContents.appendChild(buyItem);
+
+    // カートサイドメニューのクリックイベントリスナーを設定
+    buyItem.addEventListener('click', sideMenuClickHandler);
   }
 }
+
+function sideMenuClickHandler(event) {
+  const target = event.target;
+
+  // 削除ボタンがクリックされた場合
+  if (target.classList.contains('remove-item')) {
+    const productId = target.name;
+    delete cartItems[productId];
+
+    // カートの数量と合計金額を更新
+    updateCartCount();
+    updateCartTotal();
+
+    const relatedInput = document.querySelector(`input[data-id="${productId}"]`);
+    if (relatedInput) {
+      relatedInput.value = '0';
+    }
+
+    const sideMenuItem = target.closest('.buy-item');
+    if (sideMenuItem) {
+      sideMenuItem.remove();
+    }
+
+    event.stopPropagation();
+  }
+
+  // 数量変更ボタンがクリックされた場合
+  if (target.classList.contains('decrement') || target.classList.contains('increment')) {
+    const productId = target.name;
+    const currentValue = parseInt(target.parentElement.querySelector('input').value);
+
+    if (target.classList.contains('decrement')) {
+      // 減少ボタンがクリックされた場合
+      if (currentValue > 0) {
+        target.parentElement.querySelector('input').value = currentValue - 1;
+      }
+    } else {
+      // 増加ボタンがクリックされた場合
+      target.parentElement.querySelector('input').value = currentValue + 1;
+    }
+
+    // カートアイテムの数量を更新
+    cartItems[productId].quantity = parseInt(target.parentElement.querySelector('input').value);
+
+    // カートの数量と合計金額を更新
+    updateCartCount();
+    updateCartTotal();
+
+    event.stopPropagation();
+  }
+}
+
 
 
 
@@ -142,6 +219,7 @@ window.onload = function() {
       }
     });
   });
+
 };
 
 document.querySelectorAll('.card-wrap').forEach(function(card) {
@@ -154,3 +232,6 @@ document.querySelectorAll('.card-wrap').forEach(function(card) {
 $(function() {
   $('.card-title').matchHeight();
 });
+
+
+

@@ -49,10 +49,8 @@ img {
 }
 
 .header {
-  margin-bottom: 5rem;
   .header-nav {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1rem 2rem;
     background: #131921;
     display: flex;
     align-items: center;
@@ -191,11 +189,18 @@ img {
 .container {
   display: flex;
   justify-content: center;
-  padding: 0 5%;
+  background: #efefef;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 .cards-container {
   display: flex;
   flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+  background: #fff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 .flex {
   display: flex;
@@ -210,6 +215,17 @@ img {
 }
 .card-wrap {
   cursor: pointer;
+  .card-title {
+    font-size: 14px;
+    margin: 8px 0px 4px;
+    color: #007185;
+    transition: 0.15s;
+  }
+  &:hover {
+    .card-title {
+      color: #f08804;
+    }
+  }
   
 }
 .card-image {
@@ -238,18 +254,15 @@ img {
   outline: none !important;
   border: 1px solid ;
 }
-.card-title {
-  font-size: 14px;
-  margin: 8px 0px 4px;
-  color: #007185;
-}
+
 .card-price {
   font-size: 2.1rem;
   font-weight: bold;
   margin-bottom: 1rem;
   color: #B12704;
 }
-.cart-button {
+.cart-button,
+.remove-item {
   cursor: pointer;
   border: none;
   background: #ffcc00;
@@ -302,7 +315,7 @@ img {
   margin: 0px 24px 0 0;
   border-radius: 16px;
   height: 100px;
-  object-fit: cover;
+  object-fit: contain;
 }
 .cart-item-detail {
   width: 70%;
@@ -347,6 +360,7 @@ img {
   .total-price {
     font-size: 1.4rem;
     text-align: center;
+    margin-bottom: 2rem;
   }
   .red-text {
     color: #B12704;
@@ -358,11 +372,41 @@ img {
 }
 
 
+.buy-item {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+
+  &:first-of-type {
+    padding-top: 1rem;
+    border-top: 1px solid #bbb;
+  }
+
+  .buy-item-img img {
+    width: 8rem;
+    height: 9rem;
+    object-fit: contain;
+  }
+}
+
+footer {
+  background: #232F3E;
+  padding: 5rem;
+  text-align: center;
+  .footer__logo {
+    width: 20rem;
+    margin: 0 auto;
+  }
+}
+
+
 // 詳細ページスタイル
 
 .detail-inner {
   width: 90%;
   margin: 0 auto;
+  margin-top: 10rem;
 }
 
 .product-wrap {
@@ -375,5 +419,18 @@ img {
   }
   .product-text {
     width: 40%;
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .product-price {
+      color: #B12704;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      font-weight: bold;
+    }
+    .product-intro {
+      font-size: 1.6rem;
+    }
   }
 }

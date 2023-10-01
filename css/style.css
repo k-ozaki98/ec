@@ -49,12 +49,8 @@ img {
   font-weight: 200;
 }
 
-.header {
-  margin-bottom: 5rem;
-}
 .header .header-nav {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem 2rem;
   background: #131921;
   display: flex;
   align-items: center;
@@ -188,12 +184,19 @@ img {
 .container {
   display: flex;
   justify-content: center;
-  padding: 0 5%;
+  background: #efefef;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .cards-container {
   display: flex;
   flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+  background: #fff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .flex {
@@ -212,6 +215,15 @@ img {
 
 .card-wrap {
   cursor: pointer;
+}
+.card-wrap .card-title {
+  font-size: 14px;
+  margin: 8px 0px 4px;
+  color: #007185;
+  transition: 0.15s;
+}
+.card-wrap:hover .card-title {
+  color: #f08804;
 }
 
 .card-image {
@@ -244,12 +256,6 @@ img {
   border: 1px solid;
 }
 
-.card-title {
-  font-size: 14px;
-  margin: 8px 0px 4px;
-  color: #007185;
-}
-
 .card-price {
   font-size: 2.1rem;
   font-weight: bold;
@@ -257,7 +263,8 @@ img {
   color: #B12704;
 }
 
-.cart-button {
+.cart-button,
+.remo {
   cursor: pointer;
   border: none;
   background: #ffcc00;
@@ -317,8 +324,8 @@ img {
   margin: 0px 24px 0 0;
   border-radius: 16px;
   height: 100px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .cart-item-detail {
@@ -367,17 +374,47 @@ img {
 .side-menu .total-price {
   font-size: 1.4rem;
   text-align: center;
+  margin-bottom: 2rem;
 }
 .side-menu .red-text {
   color: #B12704;
   font-weight: bold;
   display: block;
   text-align: center;
+  font-size: 2rem;
+}
+
+.buy-item {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.buy-item:first-of-type {
+  padding-top: 1rem;
+  border-top: 1px solid #bbb;
+}
+.buy-item .buy-item-img img {
+  width: 8rem;
+  height: 9rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+footer {
+  background: #232F3E;
+  padding: 5rem;
+  text-align: center;
+}
+footer .footer__logo {
+  width: 20rem;
+  margin: 0 auto;
 }
 
 .detail-inner {
   width: 90%;
   margin: 0 auto;
+  margin-top: 10rem;
 }
 
 .product-wrap {
@@ -391,4 +428,17 @@ img {
 }
 .product-wrap .product-text {
   width: 40%;
+}
+.product-wrap .product-text h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.product-wrap .product-text .product-price {
+  color: #B12704;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+.product-wrap .product-text .product-intro {
+  font-size: 1.6rem;
 }

@@ -13,8 +13,8 @@
   }
 
   echo '<script>';
-echo 'const products = ' . json_encode($products) . ';';
-echo '</script>';
+  echo 'const products = ' . json_encode($products) . ';';
+  echo '</script>';
 
   // キーワードを受け取る
   $keyword = isset($_GET['query']) ? $_GET['query'] : '';
@@ -107,7 +107,7 @@ echo '</script>';
               ?>
             </div>
               <p class="card-price"><?php echo number_format(displayPrice($product['price'])) ?>円</p>
-              <input name="<?php echo $product['id'] ?>" min="0" max="9" class="item-number" type="number" value="0">
+              <input name="<?php echo $product['id'] ?>" data-id="<?php echo $product['id'] ?>" min="0" max="9" class="item-number" type="number" value="0">
               <button class="cart-button" onclick="addToCart('<?php echo $product['id'] ?>')">カートに追加</button>
             </div>
           <?php endforeach; ?>
@@ -119,11 +119,19 @@ echo '</script>';
   </div>
 
   <div class="side-menu">
+    <!-- 合計金額 -->
     <p class="total-price"></p>
-    <div class="side-img">
-      <img src="" alt="">
+    <div class="side-contents">
+
     </div>
   </div>
+
+</div>
+
+<footer>
+  <div class="footer__logo"><img src="src/images/common/logo.png" alt=""></div>
+
+</footer>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js" integrity="sha512-/bOVV1DV1AQXcypckRwsR9ThoCj7FqTV2/0Bm79bL3YSyLkVideFLE3MIZkq1u5t28ke1c0n31WYCOrO01dsUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="src/js/main.js"></script>
