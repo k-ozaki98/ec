@@ -40,12 +40,12 @@
   include 'header.php';
 ?>
 <div class="container">
-        <div class="cards-container" id="cards">
-          
-        <?php foreach ($searchResults as $product): ?>
-          <?php echo generateProductCard($product); ?>
-        <?php endforeach; ?>
-        </div>
+    <div class="cards-container" id="cards">
+      
+      <?php foreach ($searchResults as $product): ?>
+        <?php echo generateProductCard($product); ?>
+      <?php endforeach; ?>
+    </div>
   </div>
 
   <div class="side-menu">

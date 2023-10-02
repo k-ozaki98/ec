@@ -3,9 +3,8 @@
 // $jsonFilePath = '../data.json';
 
 
-  $jsonContents = file_get_contents('/Users/ozakikouki/Desktop/ec/data.json');
+  $jsonContents = file_get_contents('../../data.json');
   $products = json_decode($jsonContents, true);
-
   if($products === null) {
     die('jsonファイルの読み込みに失敗しました');
   }
