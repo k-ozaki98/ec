@@ -383,6 +383,11 @@ img {
   text-align: center;
   font-size: 2rem;
 }
+.side-menu input,
+.side-menu button {
+  width: 100%;
+  margin-bottom: 1rem;
+}
 
 .buy-item {
   border-bottom: 1px solid #bbb;
@@ -433,6 +438,8 @@ footer .footer__logo {
 .product-wrap .product-text h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #efefef;
 }
 .product-wrap .product-text .product-price {
   color: #B12704;

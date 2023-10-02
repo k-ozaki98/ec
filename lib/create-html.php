@@ -8,15 +8,15 @@ function generateProductCard($product) {
     }
 
     $productCardHTML = <<<HTML
-<div class="card">
-  <div class="card-wrap" data-id="{$product['id']}">
-    <div class="card-image">
-      <img src="{$product['image']}" alt="">
-    </div>
-    <p class="card-title">{$productName}</p>
-  </div>
-  <div class="product-rating">
-HTML;
+    <div class="card">
+      <div class="card-wrap" data-id="{$product['id']}">
+        <div class="card-image">
+          <img src="{$product['image']}" alt="">
+        </div>
+        <p class="card-title">{$productName}</p>
+      </div>
+      <div class="product-rating">
+    HTML;
 
     $rating = $product['rating'];
     for ($i = 0; $i < 5; $i++) {

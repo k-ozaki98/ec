@@ -369,6 +369,11 @@ img {
     text-align: center;
     font-size: 2rem;
   }
+  input,
+  button {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
 
 
@@ -423,6 +428,8 @@ footer {
     h2 {
       font-size: 2rem;
       margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid #efefef;
     }
     .product-price {
       color: #B12704;

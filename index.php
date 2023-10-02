@@ -40,17 +40,12 @@
   include 'header.php';
 ?>
 <div class="container">
-      <!-- <form id="cart" method="POST" action="lib/cart.php"> -->
         <div class="cards-container" id="cards">
           
         <?php foreach ($searchResults as $product): ?>
           <?php echo generateProductCard($product); ?>
         <?php endforeach; ?>
         </div>
-      <!-- </form>   -->
-      <!-- <div class="btn-footer bg-white">
-        <input form="cart" class="cart-btn" type="submit" name="submit" value="カートに追加" />
-      </div> -->
   </div>
 
   <div class="side-menu">

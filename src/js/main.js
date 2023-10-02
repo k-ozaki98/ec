@@ -5,7 +5,7 @@ const cartItems = {};
  * @param {string} productId 追加する商品のID
  */
 function addToCart(productId) {
-  const quantityInput = document.querySelector('input[name="' + productId + '"]');
+  const quantityInput = document.querySelector(`input[name="${productId}"]`);
   const quantity = parseInt(quantityInput.value);
 
   // サーバーサイドのAPIエンドポイントに非同期リクエストを送信
@@ -37,12 +37,13 @@ function addToCart(productId) {
         // カートの数量を更新
         updateCartCount();
 
-        // 合計金額を計算して表示
+        // カートの合計金額を更新
         updateCartTotal();
 
+        // サイドメニューを更新
         updateSideMenu();
 
-        const relatedInput = document.querySelector('input[data-id="' + productId + '"]');
+        const relatedInput = document.querySelector(`input[data-id="${productId}"]`);
         if (relatedInput) {
           relatedInput.value = quantity.toString();
         }
@@ -59,8 +60,10 @@ function addToCart(productId) {
  * カートの数量を更新する
  */
 function updateCartCount() {
-  const cartCountElement = document.querySelector('.cart-count');
-  cartCountElement.innerText = getCartTotalQuantity();
+  const cartCountElements = document.querySelectorAll('.cart-count');
+  cartCountElements.forEach(function(cartCountElement) {
+    cartCountElement.innerText = getCartTotalQuantity();
+  });
 }
 
 /**
@@ -90,7 +93,7 @@ function updateCartTotal() {
   // 合計金額を表示する要素を取得して更新
   const totalElement = document.querySelector('.total-price');
   if (totalElement) {
-    totalElement.innerHTML = '小計<span class="red-text">' + total + '円</span>';
+    totalElement.innerHTML = `小計<span class="red-text">${total}円</span>`;
   }
 }
 
@@ -119,10 +122,16 @@ function updateSideMenu() {
       <p class="item-price">価格：${product.price}円</p>
       <div class="item-quantity">
         <input name="${product.id}" data-id="${product.id}" min="0" max="9" class="item-number" type="number" value="${quantity}">
-        <button class="update-quantity" data-product-id="${product.id}">決定</button>
+        <button class="cart-button addToCartButton" onclick="addToCart('${product.id}', ${quantity})">カートに追加</button>
       </div>
       <button class="remove-item" name="${productId}">削除</button>
     `;
+
+    buyItem.querySelector('.item-number').addEventListener('change', function(event) {
+      const productId = this.getAttribute('name');
+      const newQuantity = parseInt(this.value);
+      addToCart(productId, newQuantity);
+    });
 
     sideContents.appendChild(buyItem);
 
@@ -185,11 +194,6 @@ function sideMenuClickHandler(event) {
   }
 }
 
-
-
-
-
-
 // ページが読み込まれたときに実行される処理
 window.onload = function() {
   // カートサイドメニューの数量変更ボタンにイベントリスナーを追加
@@ -210,6 +214,7 @@ window.onload = function() {
       }
     });
   });
+
   // 検索フォームの要素を取得
   var searchInput = document.getElementById('search-query');
   
@@ -240,7 +245,6 @@ window.onload = function() {
       }
     });
   });
-
 };
 
 document.querySelectorAll('.card-wrap').forEach(function(card) {
@@ -253,6 +257,7 @@ document.querySelectorAll('.card-wrap').forEach(function(card) {
 $(function() {
   $('.card-title').matchHeight();
 });
+
 
 
 
